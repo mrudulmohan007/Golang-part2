@@ -78,12 +78,13 @@ func getOneCourse(w http.ResponseWriter, r *http.Request) {
 	for _, course := range courses {
 		if course.CourseId == params["id"] {
 			json.NewEncoder(w).Encode(course) //here we only have to return the maching course
-			return                            // exit the function once the course is found
+			break
 
 		}
-
 	}
 	json.NewEncoder(w).Encode("No course found with given id !")
+	return
+
 }
 
 // create a course
